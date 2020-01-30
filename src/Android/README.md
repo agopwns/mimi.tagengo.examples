@@ -1,11 +1,11 @@
 # 안드로이드판 샘플 앱 빌드 실행 순서
 
-### API 예제 실행 방법
+## API 예제 실행 방법
 1. https://github.com/agopwns/mimi.tagengo.examples git download
 2. mimi.tagengo.examples/src/Android/TagengoExampleApp 안드로이드 스튜디오에서 해당 디렉토리 import
 3. run
 
-### API 주요 클래스
+## API 주요 클래스
 app > java > jp.fairydevices.mimi > example > PrismClient 경로 이동
   1. MT - 기계번역 
   2. SS - 음성합성
