@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
 
         prismClient = new PrismClient(srOutput, mtOutput);
-        prismClient.updateToken(); //予めアクセストークンを取得しておく
+        prismClient.updateToken(); // 액세스 토큰 취득
     }
 
     private void initView() {
@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (String p : permissions) {
             int permissionCheck = ContextCompat.checkSelfPermission(activity, p);
             if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-                // Android 6.0 のみ、該当パーミッションが許可されていない場合
+                // Android 6.0 만 해당 퍼미션이 허용되지 않는 경우
                 ActivityCompat.requestPermissions(activity, new String[]{p}, 1);
             } else {
-                // 許可済みの場合、もしくはAndroid 6.0以前
-                // パーミッションが必要な処理
+                // 허가된 경우, 혹은 Android 6.0이전
+                // 퍼미션 처리
             }
         }
     }
@@ -61,12 +61,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.srButton:
                 if (isRecording) {
-                    // 録音(認識)中
+                    // 녹음(인식)중
                     prismClient.SRInputEnd();
                     isRecording = false;
                     srButton.setText(R.string.sr_button_off);
                 } else {
-                    // 待機中
+                    // 대기중
                     prismClient.SRInputStart();
                     isRecording = true;
                     srButton.setText(R.string.sr_button_on);

@@ -25,11 +25,12 @@ import static android.media.AudioTrack.MODE_STREAM;
 
 class PrismClient {
 
-    private static final String ID = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-    private static final String SECRET = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-    private static final String SRURL = "https://sandbox-sr.mimi.fd.ai";
-    private static final String SSURL = "https://sandbox-ss.mimi.fd.ai/speech_synthesis";
-    private static final String MTURL = "https://sandbox-mt.mimi.fd.ai/machine_translation";
+    // 발급 받은 ID, SECRET KEY 아래에 입력
+    private static final String ID = "35acb9e68bc94ce7bd4f14574e715348";
+    private static final String SECRET = "f0b0935deccf4740a1941d59352fd01570ea7411230ba48f5bf643be03f0e98d13f390189100e1a53eea8acc0c43eb999e5356612f66a68f15455d4e4aed07bd2ede8ac285b5308e34f1ff06d67c023c40836e664016f0085f8560e44e8ae3f59a1288c81e9001e941c4748e2336bb9adab8bc7286753f927714f2aa9c760fc48a99b6d614b89d726335d9f617b4a93b169ac0d2dc93331e6cf08e07a885feedee062573c96c3d559c04e31ec18ecd261612c25600b2883ed51e96a8c542ad4d30e76d0141c5755798ad9357d68b4cd14088b96b88495499a1b4feb58beec83f8e863ae76084ca3979636580da81d98e73ab15e4cbdf0290f2e8d7d479990b2f";
+    private static final String SRURL = "https://sandbox-sr.mimi.fd.ai"; // 음성인식 END POINT
+    private static final String SSURL = "https://sandbox-ss.mimi.fd.ai/speech_synthesis"; // 음성합성 END POINT
+    private static final String MTURL = "https://sandbox-mt.mimi.fd.ai/machine_translation"; // 기계번역 END POINT
 
     private String accessToken = "";
     private ClientComCtrl client = null;
@@ -97,7 +98,7 @@ class PrismClient {
         recorder = new Recorder(recQueue);
         recorder.startRecording();
 
-        client.setTransferEncodingChunked(true); //分割送信
+        client.setTransferEncodingChunked(true); // 분할전송
         srRecordingTask = new SRRecordingTask();
 
         pool.execute(srRecordingTask);
@@ -108,20 +109,23 @@ class PrismClient {
             recorder.stopRecording();
             srRecordingTask.stopRecording();
             if (client.isTransferEncodingChunked()) {
-                // recQueue.take() が block している場合がある為、ダミーの音声データででblockを解除する
+                // recQueue.take() 가 block 하는 경우가 있으므로, 더미 음성 데이터로 block 을 해제한다.
                 recQueue.add(new byte[0]);
             }
         }
     }
 
+    // 기계 번역
     void MT() {
         Runnable task = new Runnable() {
             @Override
             public void run() {
                 try {
-                    // MT をリクエスト
-                    String inputLanguage = "ja";
-                    String targetLanguage = "en";
+                    // 기계번역 요청
+                    // API 요청 및 언어 변경시 해당 부분만 변경하면 됨. 나머지는 건드릴 부분 없음.
+                    //  ja (일본어) en (영어) es (스페인어) fr (프랑스어), id (인도네시아어), ko (한국어) my (미얀마어), th (태국어), vi (베트남어 ) 및 zh (중국어)
+                    String inputLanguage = "ko"; // 번역하는 언어
+                    String targetLanguage = "ja"; // 번역되는 언어
                     String text = srOutputView.getText().toString();
                     String MTRequestTemplate = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                             "<STML UtteranceID=\"0\" Version=\"1.0\">\n" +
@@ -136,7 +140,7 @@ class PrismClient {
                     client = new ClientComCtrl(accessToken);
                     ResponseData response = client.request(MTURL, requestXML);
 
-                    // 結果を view に返す
+                    // 결과를 view 에 표시
                     Log.d(getClass().getName(), "MT result: " + response.getXML());
                     XMLSimpleParser parser = new XMLSimpleParser();
                     final String mtResult = parser.getMT_OUTSentence(response.getXML());
@@ -155,14 +159,15 @@ class PrismClient {
         pool.submit(task);
     }
 
+    // 음성합성
     void SS() {
 
         Runnable task = new Runnable() {
             @Override
             public void run() {
                 try {
-                    // SS をリクエスト
-                    String inputLanguage = "en";
+                    // 음성합성 API 호출
+                    String inputLanguage = "ja"; //  ja (일본어) en (영어) es (스페인어) fr (프랑스어), id (인도네시아어), ko (한국어) my (미얀마어), th (태국어), vi (베트남어 ) 및 zh (중국어)
                     String text = mtOutputView.getText().toString();
                     String SSRequestTemplate = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                             "<STML UtteranceID=\"0\" Version=\"1\">\n" +
@@ -178,7 +183,7 @@ class PrismClient {
                     client = new ClientComCtrl(accessToken);
                     ResponseData response = client.request(SSURL, requestXML);
 
-                    //結果を再生する
+                    // 결과를 재생
                     Log.d(getClass().getName(), "SS result: " + response.getXML());
                     ssPlayer.write(response.getBinary(), 0, response.getBinary().length);
                 } catch (SAXException | IOException e) {
@@ -189,6 +194,7 @@ class PrismClient {
         pool.submit(task);
     }
 
+    // 음성인식
     class SRRecordingTask implements Runnable {
         private volatile boolean taskDone = false;
 
@@ -198,7 +204,7 @@ class PrismClient {
             if (!client.isTransferEncodingChunked()) {
                 return;
             }
-            String inputLanguage = "ja";
+            String inputLanguage = "ko"; //  ja (일본어) en (영어) es (스페인어) fr (프랑스어), id (인도네시아어), ko (한국어) my (미얀마어), th (태국어), vi (베트남어 ) 및 zh (중국어)
             String SRRequestTemplate = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                     "<STML UtteranceID=\"0\" Version=\"1\">\n" +
                     "<User ID=\"N/A\"/>\n" +
@@ -212,7 +218,7 @@ class PrismClient {
             ResponseData response;
             try {
                 client.request(SRURL, requestXML);
-                // 録音終了まで 録音Queueから取り出し続ける
+                // 녹음 종료까지 녹음 Queue 에서 계속 꺼내기
                 while (!taskDone) {
                     try {
                         byte[] data = recQueue.take(); // blocking
@@ -221,11 +227,11 @@ class PrismClient {
                         e.printStackTrace();
                     }
                 }
-                // 音声の終了を表明
+                // 여기까지 음성인식 작업이 완료됨
                 response = client.request(SRURL);
 
                 Log.d(getClass().getName(), "SR result: " + response.getXML());
-                // パースした結果を view に返す
+                // 응답 결과를 view 에 표시
                 XMLSimpleParser parser = new XMLSimpleParser();
                 final String srResult = parser.getSR_OUTSentence(response.getXML());
                 srOutputView.post(new Runnable() {
