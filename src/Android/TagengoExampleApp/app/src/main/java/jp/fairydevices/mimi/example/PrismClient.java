@@ -123,10 +123,10 @@ class PrismClient {
                 try {
                     // 기계번역 요청
                     // API 요청 및 언어 변경시 해당 부분만 변경하면 됨. 나머지는 건드릴 부분 없음.
-                    //  ja (일본어) en (영어) es (스페인어) fr (프랑스어), id (인도네시아어), ko (한국어) my (미얀마어), th (태국어), vi (베트남어 ) 및 zh (중국어)
+
                     String inputLanguage = "ko"; // 번역하는 언어
                     String targetLanguage = "ja"; // 번역되는 언어
-                    String text = srOutputView.getText().toString();
+                    String text = srOutputView.getText().toString(); // 번역할 내용
                     String MTRequestTemplate = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                             "<STML UtteranceID=\"0\" Version=\"1.0\">\n" +
                             "<User ID=\"N/A\"/>\n" +
