@@ -62,7 +62,7 @@
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="인식결과(ja):"/>
+            android:text="인식결과(일본어):"/>
 
         <EditText
             android:id="@+id/srOutputText"
@@ -75,7 +75,7 @@
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="번역결과(ja -> en):"/>
+            android:text="번역결과(한글 -> 일본어):"/>
 
         <EditText
             android:id="@+id/mtOutputText"

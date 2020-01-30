@@ -140,7 +140,7 @@ class PrismClient {
                     client = new ClientComCtrl(accessToken);
                     ResponseData response = client.request(MTURL, requestXML);
 
-                    // 결과를 view 에 표시
+                    // 번역한 결과를 view 에 표시
                     Log.d(getClass().getName(), "MT result: " + response.getXML());
                     XMLSimpleParser parser = new XMLSimpleParser();
                     final String mtResult = parser.getMT_OUTSentence(response.getXML());
@@ -179,11 +179,12 @@ class PrismClient {
                             "<s Delimiter=\" \">%s</s>\n" +
                             "</SS_IN>\n" +
                             "</STML>";
-                    String requestXML = String.format(SSRequestTemplate, inputLanguage, "Female", text);
+                    String requestXML = String.format(SSRequestTemplate, inputLanguage, "Male", text);
                     client = new ClientComCtrl(accessToken);
                     ResponseData response = client.request(SSURL, requestXML);
 
                     // 결과를 재생
+                    // 현재 음성 합성 소리가 너무 작게 나오는 문제가 있음
                     Log.d(getClass().getName(), "SS result: " + response.getXML());
                     ssPlayer.write(response.getBinary(), 0, response.getBinary().length);
                 } catch (SAXException | IOException e) {
