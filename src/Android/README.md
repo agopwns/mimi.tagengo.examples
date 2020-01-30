@@ -6,7 +6,7 @@
 3. run
 
 ## API 주요 클래스
-app > java > jp.fairydevices.mimi > example > PrismClient 경로 이동
+app/java/jp.fairydevices.mimi/example/PrismClient 경로 이동
   1. MT - 기계번역 
   2. SS - 음성합성
   3. SRRecordingTask - 음성인식
