@@ -3,7 +3,7 @@
 ## API 예제 실행 방법
 1. https://github.com/agopwns/mimi.tagengo.examples git download
 2. mimi.tagengo.examples/src/Android/TagengoExampleApp 안드로이드 스튜디오에서 해당 디렉토리 import
-3. run(추가 설정할 것 없이 바로 사용 가능)
+3. run(추가 설정 없이 바로 사용 가능)
 
 ## API 요청
 app/java/jp.fairydevices.mimi/example/PrismClient 경로 이동
