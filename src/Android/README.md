@@ -28,7 +28,7 @@ app/java/jp.fairydevices.mimi/example/PrismClient 경로 이동
   ~~~
   2. SS - 음성합성
   ~~~
-  String inputLanguage = "ja"; 
+  String inputLanguage = "ja"; // 음성합성하여 출력할 언어
   String text = mtOutputView.getText().toString();
   String SSRequestTemplate = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                             "<STML UtteranceID=\"0\" Version=\"1\">\n" +
@@ -46,7 +46,7 @@ app/java/jp.fairydevices.mimi/example/PrismClient 경로 이동
   ~~~                  
   3. SRRecordingTask - 음성인식
   ~~~
-  String inputLanguage = "ko"; 
+  String inputLanguage = "ko"; // 음성인식할 언어
   String SRRequestTemplate = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                     "<STML UtteranceID=\"0\" Version=\"1\">\n" +
                     "<User ID=\"N/A\"/>\n" +
@@ -78,6 +78,17 @@ app/java/jp.fairydevices.mimi/example/PrismClient 경로 이동
                 e.printStackTrace();
       }
   ~~~
+## API 지원 언어
+ja (일본어)  
+en (영어)  
+es (스페인어)  
+fr (프랑스어)  
+id (인도네시아어)  
+ko (한국어)  
+my (미얀마어)  
+th (태국어)  
+vi (베트남어)  
+zh (중국어)  
 
 ## 라이센스
 `libmimiio-android-19-armeabi-v7a-libc++.tar.gz` 에 포함된 `libmimiio_jni.so` 는 이하의 소프트웨어를 포함하고 있습니다.
