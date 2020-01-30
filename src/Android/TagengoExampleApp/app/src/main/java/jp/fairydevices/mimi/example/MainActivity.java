@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.srButton:
+            case R.id.srButton: // 음성인식
                 if (isRecording) {
                     // 녹음(인식)중
                     prismClient.SRInputEnd();
@@ -72,10 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     srButton.setText(R.string.sr_button_on);
                 }
                 break;
-            case R.id.mtButton:
+            case R.id.mtButton: // 기계번역
                 prismClient.MT();
                 break;
-            case R.id.ssButton:
+            case R.id.ssButton: // 음성합성
                 prismClient.SS();
                 break;
             default:
