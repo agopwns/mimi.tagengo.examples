@@ -3,7 +3,19 @@
 ## API 예제 실행 방법
 1. https://github.com/agopwns/mimi.tagengo.examples git download
 2. mimi.tagengo.examples/src/Android/TagengoExampleApp 안드로이드 스튜디오에서 해당 디렉토리 import
-3. run(추가 설정 없이 바로 사용 가능)
+3. run (추가 설정 없이 바로 사용 가능)
+
+## API 지원 언어
+ja (일본어)  
+en (영어)  
+es (스페인어)  
+fr (프랑스어)  
+id (인도네시아어)  
+ko (한국어)  
+my (미얀마어)  
+th (태국어)  
+vi (베트남어)  
+zh (중국어)  
 
 ## API 요청
 app/java/jp.fairydevices.mimi/example/PrismClient 경로 이동
@@ -75,20 +87,9 @@ app/java/jp.fairydevices.mimi/example/PrismClient 경로 이동
       // 중략 ...　자세한 사항은 예제 코드 참고
 
       } catch (SAXException | XPathExpressionException | ParserConfigurationException | IOException e) {
-                e.printStackTrace();
+        e.printStackTrace();
       }
   ~~~
-## API 지원 언어
-ja (일본어)  
-en (영어)  
-es (스페인어)  
-fr (프랑스어)  
-id (인도네시아어)  
-ko (한국어)  
-my (미얀마어)  
-th (태국어)  
-vi (베트남어)  
-zh (중국어)  
 
 ## 라이센스
 `libmimiio-android-19-armeabi-v7a-libc++.tar.gz` 에 포함된 `libmimiio_jni.so` 는 이하의 소프트웨어를 포함하고 있습니다.
