@@ -3,6 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
     <color name="colorWhiteOpacity0">#00FFFFFF</color>
     <color name="colorWhiteOpacity10">#1AFFFFFF</color>
     <color name="colorWhiteOpacity25">#40FFFFFF</color>
@@ -15,4 +16,8 @@
     <color name="colorBlackOpacity50">#80000000</color>
     <color name="colorBlackOpacity90">#E6000000</color>
     <color name="colorBlack">#000000</color>
+
+    <color name="colorTextGreen">#2ECC71</color>
+    <color name="colorTextGrey">#B4B4B4</color>
+
 </resources>
