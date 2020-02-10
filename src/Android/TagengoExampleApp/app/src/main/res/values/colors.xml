@@ -17,7 +17,8 @@
     <color name="colorBlackOpacity90">#E6000000</color>
     <color name="colorBlack">#000000</color>
 
-    <color name="colorTextGreen">#2ECC71</color>
+    <color name="colorTextGreen">#2ECC71</color> <!-- 메인 텍스트 컬러 -->
+    <color name="colorMainGreen">#85E189</color> <!-- 메인 컬러 -->
     <color name="colorTextGrey">#B4B4B4</color>
 
 </resources>

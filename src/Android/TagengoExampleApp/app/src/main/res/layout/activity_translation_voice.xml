@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TranslationMainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearlayout_menubar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/button_menu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/colorWhiteOpacity0"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:text="음성 번역"
+            android:textColor="@color/colorBlack"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginStart="15dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_menubar">
+
+        <Button
+            android:id="@+id/button_from_language"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:background="@color/colorWhiteOpacity0"
+            android:scaleType="centerInside"
+            android:text="한국어"
+            android:textSize="16dp"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageButton
+            android:id="@+id/button_change"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/colorWhiteOpacity0"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_swap_horiz_24px"
+            tools:ignore="VectorDrawableCompat" />
+
+        <Button
+            android:id="@+id/button_to_language"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:background="@color/colorWhiteOpacity0"
+            android:scaleType="centerInside"
+            android:text="일본어"
+            android:textSize="16dp"
+            tools:ignore="VectorDrawableCompat" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerInParent="true"
+        android:background="#F1F1F1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_language" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerInParent="true"
+        android:background="#F1F1F1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <!-- 하단바 : 음성, 대화, 이미지 번역 버튼 모음 -->
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="382dp"
+        android:layout_height="427dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="음성 입력중..."
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_language" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/baseline_more_horiz_white_48dp"
+        android:background="@drawable/oval_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+</android.support.constraint.ConstraintLayout>

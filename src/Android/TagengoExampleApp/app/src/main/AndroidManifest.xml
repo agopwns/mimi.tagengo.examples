@@ -12,14 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TranslationVoiceActivity"></activity>
-        <activity android:name=".TranslationResultActivity" />
-        <activity android:name=".TranslationMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".TranslationVoiceActivity"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+        <activity android:name=".TranslationResultActivity"></activity>
+        <activity android:name=".TranslationMainActivity">
+
         </activity>
         <activity android:name=".MainActivity" />
     </application>
