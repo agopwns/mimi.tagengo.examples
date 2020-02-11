@@ -1,9 +1,12 @@
-package jp.fairydevices.mimi.example;
+package jp.fairydevices.mimi.example.activity;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class TranslationConversation extends AppCompatActivity {
+import jp.fairydevices.mimi.example.R;
+
+public class TranslationConversationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

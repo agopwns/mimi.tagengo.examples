@@ -12,17 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TranslationHistoryActivity"></activity>
-        <activity android:name=".TranslationConversation">
+        <activity android:name=".activity.TranslationHistoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TranslationVoiceActivity"></activity>
-        <activity android:name=".TranslationResultActivity" />
-        <activity android:name=".TranslationMainActivity" />
+        <activity android:name=".activity.TranslationConversationActivity">
+
+        </activity>
+        <activity android:name=".activity.TranslationVoiceActivity"></activity>
+        <activity android:name=".activity.TranslationResultActivity" />
+        <activity android:name=".activity.TranslationMainActivity" />
         <activity android:name=".MainActivity" />
     </application>
 

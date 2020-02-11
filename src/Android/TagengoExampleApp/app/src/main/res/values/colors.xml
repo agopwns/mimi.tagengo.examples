@@ -10,6 +10,7 @@
     <color name="colorWhiteOpacity50">#80FFFFFF</color>
     <color name="colorWhiteOpacity90">#E6FFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhiteGrey">#F8F8F8</color>
     <color name="colorBlackOpacity0">#00000000</color>
     <color name="colorBlackOpacity10">#1A000000</color>
     <color name="colorBlackOpacity25">#40000000</color>

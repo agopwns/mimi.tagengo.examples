@@ -1,7 +1,9 @@
-package jp.fairydevices.mimi.example;
+package jp.fairydevices.mimi.example.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+import jp.fairydevices.mimi.example.R;
 
 public class TranslationResultActivity extends AppCompatActivity {
 
