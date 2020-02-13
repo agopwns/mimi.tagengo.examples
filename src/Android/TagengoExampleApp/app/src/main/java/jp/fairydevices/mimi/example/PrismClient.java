@@ -45,6 +45,11 @@ public class PrismClient {
     private LinkedBlockingQueue<byte[]> recQueue = new LinkedBlockingQueue<>();
     private Recorder recorder = new Recorder(recQueue);
 
+    // 입력, 출력 언어
+    private String inputLanguage;
+    private String targetLanguage;
+    private boolean isDirection;
+
     public PrismClient(View srOutputView, View mtOutputView) {
         this.srOutputView = (EditText) srOutputView;
         this.mtOutputView = (EditText) mtOutputView;
@@ -93,13 +98,14 @@ public class PrismClient {
         pool.execute(task);
     }
 
-    public void SRInputStart() {
+    public void SRInputStart(boolean isDirection) {
         client = new ClientComCtrl(accessToken);
         recQueue = new LinkedBlockingQueue<>();
         recorder = new Recorder(recQueue);
         recorder.startRecording();
 
         client.setTransferEncodingChunked(true); // 분할전송
+        this.isDirection = isDirection; // 번역 정방향, 역방향
         srRecordingTask = new SRRecordingTask();
 
         pool.execute(srRecordingTask);
@@ -114,20 +120,27 @@ public class PrismClient {
                 recQueue.add(new byte[0]);
             }
         }
+        Log.d(getClass().getName(), "SEONGJUN SRInputEnd()");
     }
 
     // 기계 번역
     public void MT() {
+        Log.d(getClass().getName(), "SEONGJUN MT() start");
+
         Runnable task = new Runnable() {
             @Override
             public void run() {
                 try {
                     // 기계번역 요청
                     // API 요청 및 언어 변경시 해당 부분만 변경하면 됨. 나머지는 건드릴 부분 없음.
+                    String text = "";
+                    if(isDirection){
+                        text = srOutputView.getText().toString(); // 번역할 내용
+                    } else {
+                        text = mtOutputView.getText().toString(); // 번역할 내용
+                    }
+                    Log.d(getClass().getName(), "SEONGJUN MT() text : " + text);
 
-                    String inputLanguage = "ko"; // 번역하는 언어
-                    String targetLanguage = "ja"; // 번역되는 언어
-                    String text = srOutputView.getText().toString(); // 번역할 내용
                     String MTRequestTemplate = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                             "<STML UtteranceID=\"0\" Version=\"1.0\">\n" +
                             "<User ID=\"N/A\"/>\n" +
@@ -142,15 +155,24 @@ public class PrismClient {
                     ResponseData response = client.request(MTURL, requestXML);
 
                     // 번역한 결과를 view 에 표시
-                    Log.d(getClass().getName(), "MT result: " + response.getXML());
+                    Log.d(getClass().getName(), "SEONGJUN MT result: " + response.getXML());
                     XMLSimpleParser parser = new XMLSimpleParser();
                     final String mtResult = parser.getMT_OUTSentence(response.getXML());
-                    mtOutputView.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mtOutputView.setText(mtResult);
-                        }
-                    });
+                    if(isDirection){
+                        mtOutputView.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                mtOutputView.setText(mtResult);
+                            }
+                        });
+                    } else {
+                        srOutputView.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                srOutputView.setText(mtResult);
+                            }
+                        });
+                    }
 
                 } catch (SAXException | XPathExpressionException | ParserConfigurationException | IOException e) {
                     e.printStackTrace();
@@ -168,7 +190,7 @@ public class PrismClient {
             public void run() {
                 try {
                     // 음성합성 API 호출
-                    String inputLanguage = "ja"; //  ja (일본어) en (영어) es (스페인어) fr (프랑스어), id (인도네시아어), ko (한국어) my (미얀마어), th (태국어), vi (베트남어 ) 및 zh (중국어)
+                    //  ja (일본어) en (영어) es (스페인어) fr (프랑스어), id (인도네시아어), ko (한국어) my (미얀마어), th (태국어), vi (베트남어 ) 및 zh (중국어)
                     String text = mtOutputView.getText().toString();
                     String SSRequestTemplate = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                             "<STML UtteranceID=\"0\" Version=\"1\">\n" +
@@ -207,7 +229,7 @@ public class PrismClient {
             if (!client.isTransferEncodingChunked()) {
                 return;
             }
-            String inputLanguage = "ko"; //  ja (일본어) en (영어) es (스페인어) fr (프랑스어), id (인도네시아어), ko (한국어) my (미얀마어), th (태국어), vi (베트남어 ) 및 zh (중국어)
+            //  ja (일본어) en (영어) es (스페인어) fr (프랑스어), id (인도네시아어), ko (한국어) my (미얀마어), th (태국어), vi (베트남어 ) 및 zh (중국어)
             String SRRequestTemplate = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                     "<STML UtteranceID=\"0\" Version=\"1\">\n" +
                     "<User ID=\"N/A\"/>\n" +
@@ -237,12 +259,26 @@ public class PrismClient {
                 // 응답 결과를 view 에 표시
                 XMLSimpleParser parser = new XMLSimpleParser();
                 final String srResult = parser.getSR_OUTSentence(response.getXML());
-                srOutputView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        srOutputView.setText(srResult);
-                    }
-                });
+                if(isDirection){
+                    srOutputView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            srOutputView.setText(srResult);
+                            MT();
+                            Log.d(getClass().getName(), "SEONGJUN SRRecordingTask : ");
+                        }
+                    });
+                } else {
+                    mtOutputView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mtOutputView.setText(srResult);
+                            MT();
+                            Log.d(getClass().getName(), "SEONGJUN SRRecordingTask : ");
+                        }
+                    });
+                }
+
             } catch (SAXException | XPathExpressionException | ParserConfigurationException | IOException e) {
                 e.printStackTrace();
             }
@@ -251,5 +287,13 @@ public class PrismClient {
         public void stopRecording() {
             taskDone = true;
         }
+    }
+
+    public void setInputLanguage(String inputLanguage) {
+        this.inputLanguage = inputLanguage;
+    }
+
+    public void setTargetLanguage(String targetLanguage) {
+        this.targetLanguage = targetLanguage;
     }
 }

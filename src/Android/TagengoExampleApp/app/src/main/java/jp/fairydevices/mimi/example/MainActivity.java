@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     srButton.setText(R.string.sr_button_off);
                 } else {
                     // 대기중
-                    prismClient.SRInputStart();
+                    prismClient.SRInputStart(true);
                     isRecording = true;
                     srButton.setText(R.string.sr_button_on);
                 }

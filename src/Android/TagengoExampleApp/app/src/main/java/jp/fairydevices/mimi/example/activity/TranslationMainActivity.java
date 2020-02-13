@@ -2,6 +2,7 @@ package jp.fairydevices.mimi.example.activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -24,6 +26,7 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
     private ImageButton mtButton; // 기계 번역
     private ImageButton ssButton; // 음성 합성
     private ImageButton clearButton; // 인식 결과 초기화
+    private ImageButton conversationButton; // 인식 결과 초기화
 
     private EditText srOutput; // 인식 결과 - 번역할 문장
     private EditText mtOutput; // 번역 결과
@@ -43,28 +46,26 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
 
         prismClient = new PrismClient(srOutput, mtOutput);
         prismClient.updateToken(); // 액세스 토큰 취득
+        prismClient.setInputLanguage("ko");
+        prismClient.setTargetLanguage("ja");
+
 
         // 인식 결과 이벤트
         srOutput.addTextChangedListener(new TextWatcher() {
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // 입력되는 텍스트에 변화가 있을 때
-
                 if(srOutput.getText().length() == 0){
                     // x 이미지 버튼 invisible
                     clearButton.setVisibility(View.INVISIBLE);
                 }
             }
-
             @Override
             public void afterTextChanged(Editable arg0) {
                 // 입력이 끝났을 때
                 // x 이미지 버튼 visible
                 clearButton.setVisibility(View.VISIBLE);
-
             }
-
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // 입력하기 전에
@@ -77,6 +78,7 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
         mtButton = findViewById(R.id.mtButton);
         ssButton = findViewById(R.id.ssButton);
         clearButton = findViewById(R.id.clearButton);
+        conversationButton = findViewById(R.id.conversationButton);
         srOutput = findViewById(R.id.srOutputText);
         mtOutput = findViewById(R.id.mtOutputText);
         srTextview = findViewById(R.id.srTextview);
@@ -84,6 +86,7 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
         mtButton.setOnClickListener(this);
         ssButton.setOnClickListener(this);
         clearButton.setOnClickListener(this);
+        conversationButton.setOnClickListener(this);
     }
 
     private void checkPermission(Activity activity) {
@@ -111,11 +114,12 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
                     srTextview.setText("음성");
                 } else {
                     // 대기중
-                    prismClient.SRInputStart();
+                    prismClient.SRInputStart(true);
                     isRecording = true;
-                    
+                    // TODO : 나중에 음성 인식 종료 시점 파악이 되면 자동으로 없어지게
+                    Toast.makeText(getApplicationContext(),"음성 인식중..",Toast.LENGTH_SHORT).show();
+                    //Snackbar.make(view,"음성 인식중...",Snackbar.LENGTH_LONG).show();
                     srTextview.setText("인식중..");
-
                 }
                 break;
             case R.id.mtButton: // 기계번역
@@ -124,13 +128,19 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
                 ssButton.setVisibility(View.VISIBLE);
                 break;
             case R.id.ssButton: // 음성합성
+                prismClient.setInputLanguage("ja");
                 prismClient.SS();
                 break;
             case R.id.clearButton: // 인식 텍스트 초기화
                 srOutput.setText("");
                 clearButton.setVisibility(View.INVISIBLE);
                 break;
-            default:        }
+            case R.id.conversationButton: // 인식 텍스트 초기화
+                Intent intent = new Intent(this, TranslationConversationActivity.class);
+                startActivity(intent);
+                break;
+            default:
+        }
     }
 
 

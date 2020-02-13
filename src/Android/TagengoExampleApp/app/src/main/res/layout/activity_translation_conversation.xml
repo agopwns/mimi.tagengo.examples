@@ -54,33 +54,31 @@
             android:orientation="horizontal"
             android:layout_weight="5">
 
-            <TextView
-                android:id="@+id/textview_after_translate"
+            <EditText
+                android:id="@+id/mtOutputText"
                 android:layout_width="340dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:background="@null"
                 android:ems="10"
-                android:gravity="center"
                 android:inputType="textMultiLine"
-                android:text="おはようございます。"
-                android:textStyle="bold"
                 android:textColor="@color/colorWhite"
+                android:minHeight="40dp"
                 android:textSize="30dp"
+                android:textStyle="bold"
+                android:maxLines="4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.411"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/view2" />
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/directionButton"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                app:srcCompat="@drawable/ic_swap_vert_white_24dp"
-                android:background="@color/colorWhiteOpacity0">
-
-
-            </ImageView>
+                android:visibility="invisible"
+                android:background="@color/colorWhiteOpacity0"
+                app:srcCompat="@drawable/ic_swap_vert_white_24dp"/>
 
         </LinearLayout>
 
@@ -88,6 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:layout_marginLeft="30dp"
             android:orientation="horizontal"
             android:gravity="center">
 
@@ -113,20 +112,19 @@
 
             </LinearLayout>
 
-            <TextView
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:text="오하요우고자이마스"
-                android:textColor="@color/colorWhite"
-                android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:layout_weight="1">
 
+            </LinearLayout>
 
             <ImageButton
+                android:id="@+id/srAfterButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginRight="15dp"
                 app:srcCompat="@drawable/ic_mic_none_white_24dp"
                 android:background="@drawable/oval_shape_mic"
                 />
@@ -149,18 +147,19 @@
             android:orientation="horizontal"
             android:layout_weight="5">
 
-            <TextView
+            <EditText
+                android:id="@+id/srOutputText"
                 android:layout_width="340dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
                 android:background="@null"
                 android:ems="10"
                 android:inputType="textMultiLine"
-                android:text="안녕하세요"
-                android:textStyle="bold"
                 android:textColor="@color/colorTextGreen"
                 android:textSize="30dp"
+                android:textStyle="bold"
+                android:minHeight="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.411"
                 app:layout_constraintStart_toStartOf="parent"
@@ -206,6 +205,7 @@
             </LinearLayout>
 
             <ImageButton
+                android:id="@+id/srBeforeButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginRight="15dp"
