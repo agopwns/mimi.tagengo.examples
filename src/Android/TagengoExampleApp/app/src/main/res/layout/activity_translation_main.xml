@@ -104,19 +104,20 @@
 
     <EditText
         android:id="@+id/srOutputText"
-        android:layout_width="370dp"
+        android:layout_width="323dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="12dp"
         android:background="@null"
         android:ems="10"
         android:gravity="start|top"
         android:hint="번역할 내용을 입력해주세요..."
-        android:minHeight="36dp"
+        android:isScrollContainer="true"
         android:maxHeight="90dp"
         android:maxLength="50"
         android:maxLines="4"
-        android:isScrollContainer="true"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:minHeight="36dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_language" />
 
@@ -170,7 +171,7 @@
 
             <ImageButton
                 android:id="@+id/mtButton"
-                android:layout_width="30dp"
+                android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:background="@color/colorWhiteOpacity0"
@@ -268,5 +269,37 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ssButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:background="@color/colorWhiteOpacity0"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_volume_up_black_24dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mtOutputText"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageButton
+        android:id="@+id/clearButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="14dp"
+        android:background="@color/colorWhiteOpacity0"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_clear_black_24dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/srOutputText"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_language"
+        tools:ignore="VectorDrawableCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
