@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        srButton = findViewById(R.id.srButton);
-        Button mtButton = findViewById(R.id.mtButton);
-        Button ssButton = findViewById(R.id.ssButton);
-        srOutput = findViewById(R.id.srOutputText);
-        mtOutput = findViewById(R.id.mtOutputText);
+        srButton = findViewById(R.id.srButton); // 음성인식 버튼
+        Button mtButton = findViewById(R.id.mtButton); // 번역 버튼
+        Button ssButton = findViewById(R.id.ssButton); // 음성합성 버튼
+        srOutput = findViewById(R.id.srOutputText); // 인식결과
+        mtOutput = findViewById(R.id.mtOutputText); // 번역결과
         srButton.setOnClickListener(this);
         mtButton.setOnClickListener(this);
         ssButton.setOnClickListener(this);

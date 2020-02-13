@@ -81,6 +81,7 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_centerInParent="true"
@@ -88,49 +89,115 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_language" />
 
+
+    <!-- 하단바 : 음성, 대화, 이미지 번역 버튼 모음 -->
+
     <View
-        android:id="@+id/view"
+        android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="10dp"
         android:layout_centerInParent="true"
         android:background="#F1F1F1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/srOutputText" />
 
-    <!-- 하단바 : 음성, 대화, 이미지 번역 버튼 모음 -->
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="386dp"
-        android:layout_height="628dp"
+        android:id="@+id/srOutputText"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@null"
         android:ems="10"
         android:gravity="start|top"
         android:hint="번역할 내용을 입력해주세요..."
-        android:inputType="textMultiLine"
+        android:minHeight="36dp"
+        android:maxHeight="90dp"
+        android:maxLength="50"
+        android:maxLines="4"
+        android:isScrollContainer="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_language" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerInParent="true"
+        android:background="#F1F1F1"
+        app:layout_constraintBottom_toTopOf="@+id/linearlayout_underbar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/mtOutputText"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:minHeight="36dp"
+        android:maxHeight="110dp"
+        android:maxLength="70"
+        android:maxLines="6"
+        android:textColor="@color/colorTextGreen"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:isScrollContainer="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/srOutputText" />
 
     <LinearLayout
         android:id="@+id/linearlayout_underbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
             android:gravity="center"
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/button_mic"
+                android:id="@+id/mtButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@color/colorWhiteOpacity0"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_g_translate_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="번역"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/srButton"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
@@ -144,15 +211,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="음성"
-                android:textSize="12dp"/>
+                android:textSize="12dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:layout_marginRight="120dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
             android:orientation="vertical">
 
             <ImageButton
@@ -170,13 +237,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="대화"
-                android:textSize="12dp"/>
+                android:textSize="12dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
             android:orientation="vertical">
 
             <ImageButton
@@ -194,7 +263,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="카메라"
-                android:textSize="12dp"/>
+                android:textSize="12dp" />
 
         </LinearLayout>
 

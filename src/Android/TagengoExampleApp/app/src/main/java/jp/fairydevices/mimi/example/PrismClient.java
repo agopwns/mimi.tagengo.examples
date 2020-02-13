@@ -23,7 +23,7 @@ import ai.fd.mimi.prism.ResponseData;
 
 import static android.media.AudioTrack.MODE_STREAM;
 
-class PrismClient {
+public class PrismClient {
 
     // 발급 받은 ID, SECRET KEY 아래에 입력
     private static final String ID = "35acb9e68bc94ce7bd4f14574e715348";
@@ -45,7 +45,7 @@ class PrismClient {
     private LinkedBlockingQueue<byte[]> recQueue = new LinkedBlockingQueue<>();
     private Recorder recorder = new Recorder(recQueue);
 
-    PrismClient(View srOutputView, View mtOutputView) {
+    public PrismClient(View srOutputView, View mtOutputView) {
         this.srOutputView = (EditText) srOutputView;
         this.mtOutputView = (EditText) mtOutputView;
 
@@ -77,7 +77,7 @@ class PrismClient {
         ssPlayer.play();
     }
 
-    void updateToken() {
+    public void updateToken() {
         Runnable task = new Runnable() {
             @Override
             public void run() {
@@ -92,7 +92,7 @@ class PrismClient {
         pool.execute(task);
     }
 
-    void SRInputStart() {
+    public void SRInputStart() {
         client = new ClientComCtrl(accessToken);
         recQueue = new LinkedBlockingQueue<>();
         recorder = new Recorder(recQueue);
@@ -104,7 +104,7 @@ class PrismClient {
         pool.execute(srRecordingTask);
     }
 
-    void SRInputEnd() {
+    public void SRInputEnd() {
         if (srRecordingTask != null) {
             recorder.stopRecording();
             srRecordingTask.stopRecording();
@@ -116,7 +116,7 @@ class PrismClient {
     }
 
     // 기계 번역
-    void MT() {
+    public void MT() {
         Runnable task = new Runnable() {
             @Override
             public void run() {
@@ -160,7 +160,7 @@ class PrismClient {
     }
 
     // 음성합성
-    void SS() {
+    public void SS() {
 
         Runnable task = new Runnable() {
             @Override
@@ -196,7 +196,7 @@ class PrismClient {
     }
 
     // 음성인식
-    class SRRecordingTask implements Runnable {
+    public class SRRecordingTask implements Runnable {
         private volatile boolean taskDone = false;
 
         @Override
@@ -246,7 +246,7 @@ class PrismClient {
             }
         }
 
-        void stopRecording() {
+        public void stopRecording() {
             taskDone = true;
         }
     }
