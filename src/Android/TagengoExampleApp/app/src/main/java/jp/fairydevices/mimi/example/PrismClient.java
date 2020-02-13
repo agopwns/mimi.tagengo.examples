@@ -55,7 +55,7 @@ public class PrismClient {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             ssPlayer = new AudioTrack.Builder()
                     .setAudioAttributes(new AudioAttributes.Builder()
-                            .setUsage(AudioAttributes.USAGE_VOICE_COMMUNICATION)
+                            .setUsage(AudioAttributes.USAGE_MEDIA) // USAGE_VOICE_COMMUNICATION default
                             .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
                             .build())
                     .setAudioFormat(new AudioFormat.Builder()
@@ -74,6 +74,7 @@ public class PrismClient {
                     , bufferSize
                     , MODE_STREAM);
         }
+        ssPlayer.setVolume(50);
         ssPlayer.play();
     }
 
@@ -186,6 +187,7 @@ public class PrismClient {
                     // 결과를 재생
                     // 현재 음성 합성 소리가 너무 작게 나오는 문제가 있음
                     Log.d(getClass().getName(), "SS result: " + response.getXML());
+                    ssPlayer.setVolume(15);
                     ssPlayer.write(response.getBinary(), 0, response.getBinary().length);
                 } catch (SAXException | IOException e) {
                     e.printStackTrace();

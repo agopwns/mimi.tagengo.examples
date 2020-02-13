@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -26,6 +27,8 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
 
     private EditText srOutput; // 인식 결과 - 번역할 문장
     private EditText mtOutput; // 번역 결과
+
+    private TextView srTextview; // 음성 인식 텍스트
 
     private boolean isRecording = false;
     private PrismClient prismClient = null;
@@ -76,6 +79,7 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
         clearButton = findViewById(R.id.clearButton);
         srOutput = findViewById(R.id.srOutputText);
         mtOutput = findViewById(R.id.mtOutputText);
+        srTextview = findViewById(R.id.srTextview);
         srButton.setOnClickListener(this);
         mtButton.setOnClickListener(this);
         ssButton.setOnClickListener(this);
@@ -104,23 +108,22 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
                     // 녹음(인식)중
                     prismClient.SRInputEnd();
                     isRecording = false;
-//                    srButton.setText(R.string.sr_button_off);
+                    srTextview.setText("음성");
                 } else {
                     // 대기중
                     prismClient.SRInputStart();
                     isRecording = true;
-//                    srButton.setText(R.string.sr_button_on);
+                    
+                    srTextview.setText("인식중..");
+
                 }
                 break;
             case R.id.mtButton: // 기계번역
                 prismClient.MT();
-
                 // 번역 후 음성 합성 버튼 나오게
-
                 ssButton.setVisibility(View.VISIBLE);
                 break;
             case R.id.ssButton: // 음성합성
-                // TODO : 합성된 음성 크기가 최소인 부분 고쳐야 함.
                 prismClient.SS();
                 break;
             case R.id.clearButton: // 인식 텍스트 초기화
