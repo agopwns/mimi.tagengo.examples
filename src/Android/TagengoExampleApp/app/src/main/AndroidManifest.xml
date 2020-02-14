@@ -4,8 +4,8 @@
     package="jp.fairydevices.mimi.example">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 카메라 권한 -->
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 카메라 권한 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.hardware.camera2.full" />
 
@@ -15,10 +15,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.TranslationCameraActivity"></activity>
-        <activity android:name=".activity.TranslationBookmarkActivity"></activity>
-        <activity android:name=".activity.TranslationHistoryActivity"></activity>
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.TranslationOCRResultActivity"></activity>
+        <activity android:name=".activity.TranslationCameraActivity">
+
+        </activity>
+        <activity android:name=".activity.TranslationBookmarkActivity" />
+        <activity android:name=".activity.TranslationHistoryActivity" />
         <activity android:name=".activity.TranslationConversationActivity" />
         <activity android:name=".activity.TranslationVoiceActivity" />
         <activity android:name=".activity.TranslationResultActivity" />
@@ -29,7 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="ocr" />
     </application>
 
 </manifest>

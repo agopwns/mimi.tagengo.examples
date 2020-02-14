@@ -137,11 +137,11 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
                 srOutput.setText("");
                 clearButton.setVisibility(View.INVISIBLE);
                 break;
-            case R.id.conversationButton: // 인식 텍스트 초기화
+            case R.id.conversationButton: // 대화 번역 액티비티로 이동
                 Intent intent = new Intent(this, TranslationConversationActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.cameraButton: // 인식 텍스트 초기화
+            case R.id.cameraButton: // 카메라 번역 액티비티로 이동
                 Intent cameraIntent = new Intent(this, TranslationCameraActivity.class);
                 startActivity(cameraIntent);
                 break;

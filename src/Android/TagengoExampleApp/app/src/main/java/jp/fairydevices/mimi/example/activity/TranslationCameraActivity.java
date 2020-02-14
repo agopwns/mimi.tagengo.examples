@@ -3,6 +3,7 @@ package jp.fairydevices.mimi.example.activity;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
@@ -51,6 +52,7 @@ public class TranslationCameraActivity extends AppCompatActivity {
 
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
 
+    // 카메라 화면을 기본 상태로 정렬 하기 위함
     static {
         ORIENTATIONS.append(Surface.ROTATION_0,90);
         ORIENTATIONS.append(Surface.ROTATION_90,0);
@@ -60,15 +62,12 @@ public class TranslationCameraActivity extends AppCompatActivity {
     String cameraId;
     CameraDevice cameraDevice;
     CameraCaptureSession cameraCaptureSession;
-    CaptureRequest captureRequest;
     CaptureRequest.Builder captureRequestBuilder;
 
     private Size imageDimensions;
-    private ImageReader imageReader;
     private File file;
     Handler mBackgroundHandler;
     HandlerThread mBackgroundThread;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +97,7 @@ public class TranslationCameraActivity extends AppCompatActivity {
 
         CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
 
-        // 저장할 JPEG 사이즈 설정
+        // 저장할 JPEG 파일 옵션 설정
         CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraDevice.getId());
         Size[] jpegSizes = null;
 
@@ -125,7 +124,7 @@ public class TranslationCameraActivity extends AppCompatActivity {
         int rotation = getWindowManager().getDefaultDisplay().getRotation();
         captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
 
-        // 사진 찍은 시간 저장용
+        // 저장 할 때 파일명에 사진 찍은 시간 넣기 위함
         Long tsLong = System.currentTimeMillis() / 1000;
         String ts = tsLong.toString();
 
@@ -143,6 +142,12 @@ public class TranslationCameraActivity extends AppCompatActivity {
                 buffer.get(bytes);
                 try {
                     save(bytes); // 저장
+
+                    // 저장된 파일 경로를 OCRResultActivity 로 넘겨주며 액티비티 이동
+                    Intent intent = new Intent(getApplicationContext(), TranslationOCRResultActivity.class);
+                    intent.putExtra("FilePath", file.getAbsolutePath());
+                    startActivity(intent);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 } finally {
@@ -219,8 +224,6 @@ public class TranslationCameraActivity extends AppCompatActivity {
         mBackgroundThread = new HandlerThread("Camera Background");
         mBackgroundThread.start();
         mBackgroundHandler = new Handler(mBackgroundThread.getLooper());
-
-
     }
 
     @Override

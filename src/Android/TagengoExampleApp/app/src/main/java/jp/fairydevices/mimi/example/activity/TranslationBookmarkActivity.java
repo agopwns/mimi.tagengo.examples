@@ -32,6 +32,6 @@ public class TranslationBookmarkActivity extends AppCompatActivity {
 
         // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
         TranslationBookmarkAdapter adapter = new TranslationBookmarkAdapter(list) ;
-        recyclerView.setAdapter(adapter) ;
+        recyclerView.setAdapter(adapter);
     }
 }
