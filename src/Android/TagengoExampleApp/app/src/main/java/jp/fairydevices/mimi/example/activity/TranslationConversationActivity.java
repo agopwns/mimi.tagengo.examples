@@ -110,6 +110,11 @@ public class TranslationConversationActivity extends AppCompatActivity implement
                 else
                     mtOutput.setRotationX(0);
 
+                if(mtOutput.getRotationY() == 0)
+                    mtOutput.setRotationY(180);
+                else
+                    mtOutput.setRotationY(0);
+
                 Log.d(getClass().getName(), "SEONGJUN directionButton");
                 break;
             default:
