@@ -26,6 +26,7 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
     private ImageButton mtButton; // 기계 번역
     private ImageButton ssButton; // 음성 합성
     private ImageButton clearButton; // 인식 결과 초기화
+    private ImageButton cameraButton; // 인식 결과 초기화
     private ImageButton conversationButton; // 인식 결과 초기화
 
     private EditText srOutput; // 인식 결과 - 번역할 문장
@@ -48,7 +49,6 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
         prismClient.updateToken(); // 액세스 토큰 취득
         prismClient.setInputLanguage("ko");
         prismClient.setTargetLanguage("ja");
-
 
         // 인식 결과 이벤트
         srOutput.addTextChangedListener(new TextWatcher() {
@@ -79,12 +79,14 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
         ssButton = findViewById(R.id.ssButton);
         clearButton = findViewById(R.id.clearButton);
         conversationButton = findViewById(R.id.conversationButton);
+        cameraButton = findViewById(R.id.cameraButton);
         srOutput = findViewById(R.id.srOutputText);
         mtOutput = findViewById(R.id.mtOutputText);
         srTextview = findViewById(R.id.srTextview);
         srButton.setOnClickListener(this);
         mtButton.setOnClickListener(this);
         ssButton.setOnClickListener(this);
+        cameraButton.setOnClickListener(this);
         clearButton.setOnClickListener(this);
         conversationButton.setOnClickListener(this);
     }
@@ -138,6 +140,10 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
             case R.id.conversationButton: // 인식 텍스트 초기화
                 Intent intent = new Intent(this, TranslationConversationActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.cameraButton: // 인식 텍스트 초기화
+                Intent cameraIntent = new Intent(this, TranslationCameraActivity.class);
+                startActivity(cameraIntent);
                 break;
             default:
         }
