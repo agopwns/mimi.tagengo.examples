@@ -27,7 +27,7 @@ import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -48,7 +48,7 @@ import jp.fairydevices.mimi.example.R;
 public class TranslationCameraActivity extends AppCompatActivity {
 
     TextureView textureView;
-    Button button;
+    ImageButton button;
 
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
 
@@ -75,7 +75,7 @@ public class TranslationCameraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_translation_camera);
 
         textureView = (TextureView) findViewById(R.id.textureView);
-        button = (Button)findViewById(R.id.captureButton);
+        button = (ImageButton) findViewById(R.id.captureButton);
         textureView.setSurfaceTextureListener(textureListener);
 
         button.setOnClickListener(new View.OnClickListener() {

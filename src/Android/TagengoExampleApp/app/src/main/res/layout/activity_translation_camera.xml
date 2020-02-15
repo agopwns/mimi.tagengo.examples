@@ -8,17 +8,62 @@
     android:orientation="vertical"
     tools:context=".activity.TranslationCameraActivity">
 
+    <LinearLayout
+        android:id="@+id/linearlayout_language"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_menubar">
+
+        <Button
+            android:id="@+id/button_from_language"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:background="@color/colorWhiteOpacity0"
+            android:scaleType="centerInside"
+            android:text="한국어"
+            android:textSize="16dp"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageButton
+            android:id="@+id/button_change"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/colorWhiteOpacity0"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_swap_horiz_24px"
+            tools:ignore="VectorDrawableCompat" />
+
+        <Button
+            android:id="@+id/button_to_language"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:background="@color/colorWhiteOpacity0"
+            android:scaleType="centerInside"
+            android:text="일본어"
+            android:textSize="16dp"
+            tools:ignore="VectorDrawableCompat" />
+
+    </LinearLayout>
+
     <TextureView
         android:id="@+id/textureView"
         android:layout_width="match_parent"
         android:layout_height="600dp"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/captureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center"
-        android:text="캡쳐"/>
+        app:srcCompat="@drawable/ic_camera_white_24dp"
+        android:background="@drawable/oval_shape"
+        />
 
 
 </LinearLayout>

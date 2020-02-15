@@ -50,6 +50,8 @@ public class PrismClient {
     private String targetLanguage;
     private boolean isDirection;
 
+
+
     public PrismClient(View srOutputView, View mtOutputView) {
         this.srOutputView = (EditText) srOutputView;
         this.mtOutputView = (EditText) mtOutputView;
@@ -156,6 +158,7 @@ public class PrismClient {
 
                     // 번역한 결과를 view 에 표시
                     Log.d(getClass().getName(), "SEONGJUN MT result: " + response.getXML());
+
                     XMLSimpleParser parser = new XMLSimpleParser();
                     final String mtResult = parser.getMT_OUTSentence(response.getXML());
                     if(isDirection){
@@ -163,6 +166,7 @@ public class PrismClient {
                             @Override
                             public void run() {
                                 mtOutputView.setText(mtResult);
+                                Log.d(getClass().getName(), "SEONGJUN MT mtOutputView: ");
                             }
                         });
                     } else {
@@ -170,6 +174,7 @@ public class PrismClient {
                             @Override
                             public void run() {
                                 srOutputView.setText(mtResult);
+                                Log.d(getClass().getName(), "SEONGJUN MT srOutputView: ");
                             }
                         });
                     }
@@ -295,5 +300,13 @@ public class PrismClient {
 
     public void setTargetLanguage(String targetLanguage) {
         this.targetLanguage = targetLanguage;
+    }
+
+    public boolean isDirection() {
+        return isDirection;
+    }
+
+    public void setDirection(boolean direction) {
+        this.isDirection = direction;
     }
 }

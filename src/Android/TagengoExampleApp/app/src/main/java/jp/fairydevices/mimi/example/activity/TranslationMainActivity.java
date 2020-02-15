@@ -125,6 +125,7 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
                 }
                 break;
             case R.id.mtButton: // 기계번역
+                prismClient.setDirection(true);
                 prismClient.MT();
                 // 번역 후 음성 합성 버튼 나오게
                 ssButton.setVisibility(View.VISIBLE);
