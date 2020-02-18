@@ -42,7 +42,7 @@ public class TranslationBookmarkAdapter extends RecyclerView.Adapter<Translation
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
     public TranslationBookmarkAdapter(List<TranslationHistory> list, Context context) {
-        mData = list ;
+        mData = list;
         mContext = context;
         dao = HistoryDB.getInstance(mContext).historyDao();
     }
@@ -50,13 +50,13 @@ public class TranslationBookmarkAdapter extends RecyclerView.Adapter<Translation
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
     @Override
     public TranslationBookmarkAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext() ;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
+        Context context = parent.getContext();
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = inflater.inflate(R.layout.layout_translation_history, parent, false) ;
-        TranslationBookmarkAdapter.ViewHolder vh = new TranslationBookmarkAdapter.ViewHolder(view) ;
+        View view = inflater.inflate(R.layout.layout_translation_history, parent, false);
+        TranslationBookmarkAdapter.ViewHolder vh = new TranslationBookmarkAdapter.ViewHolder(view);
 
-        return vh ;
+        return vh;
     }
 
     // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
@@ -65,12 +65,13 @@ public class TranslationBookmarkAdapter extends RecyclerView.Adapter<Translation
         String text = mData.get(position).getBeforeString();
         String text2 = mData.get(position).getAfterString();
 
-        holder.textview_before_translate.setText(text) ;
-        holder.textview_after_translate.setText(text2) ;
+        holder.textview_before_translate.setText(text);
+        holder.textview_after_translate.setText(text2);
 
         if(mData.get(position).isBookmark()){
             holder.bookmarkButton.setImageResource(R.drawable.ic_star_black_24dp);
         }
+
         holder.bookmarkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
