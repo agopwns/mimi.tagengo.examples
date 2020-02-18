@@ -25,9 +25,12 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
     private ImageButton srButton; // 음성 인식
     private ImageButton mtButton; // 기계 번역
     private ImageButton ssButton; // 음성 합성
-    private ImageButton clearButton; // 인식 결과 초기화
-    private ImageButton cameraButton; // 인식 결과 초기화
-    private ImageButton conversationButton; // 인식 결과 초기화
+    private ImageButton clearButton;
+    private ImageButton cameraButton;
+    private ImageButton conversationButton;
+    private ImageButton menuButton;
+    private ImageButton bookmarkButton;
+
 
     private EditText srOutput; // 인식 결과 - 번역할 문장
     private EditText mtOutput; // 번역 결과
@@ -37,6 +40,8 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
     private boolean isRecording = false;
     private PrismClient prismClient = null;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +50,12 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
         checkPermission(this); // 번역 메인 화면에서 한 번만 검사하면 됨
         initView(); // 레이아웃 뷰 초기화
 
-        prismClient = new PrismClient(srOutput, mtOutput);
+        prismClient = new PrismClient(srOutput, mtOutput, this);
         prismClient.updateToken(); // 액세스 토큰 취득
         prismClient.setInputLanguage("ko");
         prismClient.setTargetLanguage("ja");
 
-        // 인식 결과 이벤트
+        // 인식 결과 후에 이벤트 처리를 위한 리스너
         srOutput.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -80,15 +85,21 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
         clearButton = findViewById(R.id.clearButton);
         conversationButton = findViewById(R.id.conversationButton);
         cameraButton = findViewById(R.id.cameraButton);
+        menuButton = findViewById(R.id.menuButton);
+        bookmarkButton = findViewById(R.id.bookmarkButton);
+
         srOutput = findViewById(R.id.srOutputText);
         mtOutput = findViewById(R.id.mtOutputText);
         srTextview = findViewById(R.id.srTextview);
+
         srButton.setOnClickListener(this);
         mtButton.setOnClickListener(this);
         ssButton.setOnClickListener(this);
         cameraButton.setOnClickListener(this);
         clearButton.setOnClickListener(this);
         conversationButton.setOnClickListener(this);
+        menuButton.setOnClickListener(this);
+        bookmarkButton.setOnClickListener(this);
     }
 
     private void checkPermission(Activity activity) {
@@ -111,7 +122,7 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
             case R.id.srButton: // 음성인식
                 if (isRecording) {
                     // 녹음(인식)중
-                    prismClient.SRInputEnd();
+                    prismClient.SRInputEnd(); // 음성 인식 종료
                     isRecording = false;
                     srTextview.setText("음성");
                 } else {
@@ -145,6 +156,14 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
             case R.id.cameraButton: // 카메라 번역 액티비티로 이동
                 Intent cameraIntent = new Intent(this, TranslationCameraActivity.class);
                 startActivity(cameraIntent);
+                break;
+            case R.id.menuButton: // 번역 기록 리스트 이동
+                Intent historyIntent = new Intent(this, TranslationHistoryActivity.class);
+                startActivity(historyIntent);
+                break;
+            case R.id.bookmarkButton: // 북마크
+                Intent bookmarkIntent = new Intent(this, TranslationBookmarkActivity.class);
+                startActivity(bookmarkIntent);
                 break;
             default:
         }

@@ -1,5 +1,6 @@
 package jp.fairydevices.mimi.example;
 
+import android.content.Context;
 import android.media.AudioAttributes;
 import android.media.AudioFormat;
 import android.media.AudioManager;
@@ -20,6 +21,9 @@ import javax.xml.xpath.XPathExpressionException;
 
 import ai.fd.mimi.prism.ClientComCtrl;
 import ai.fd.mimi.prism.ResponseData;
+import jp.fairydevices.mimi.example.db.HistoryDB;
+import jp.fairydevices.mimi.example.db.HistoryDao;
+import jp.fairydevices.mimi.example.model.TranslationHistory;
 
 import static android.media.AudioTrack.MODE_STREAM;
 
@@ -50,12 +54,16 @@ public class PrismClient {
     private String targetLanguage;
     private boolean isDirection;
 
+    // 기계 번역(MT)시 번역 기록을 저장하기 위한 HistoryDao
+    private HistoryDao dao;
+    String sr = ""; // 인식결과 db 저장을 위한 전역 변수
 
 
-    public PrismClient(View srOutputView, View mtOutputView) {
+    public PrismClient(View srOutputView, View mtOutputView, Context context) {
         this.srOutputView = (EditText) srOutputView;
         this.mtOutputView = (EditText) mtOutputView;
 
+        dao = HistoryDB.getInstance(context).historyDao();
         pool = Executors.newSingleThreadExecutor();
 
         int bufferSize = AudioTrack.getMinBufferSize(16000, AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT);
@@ -129,6 +137,7 @@ public class PrismClient {
     public void MT() {
         Log.d(getClass().getName(), "SEONGJUN MT() start");
 
+
         Runnable task = new Runnable() {
             @Override
             public void run() {
@@ -142,6 +151,7 @@ public class PrismClient {
                         text = mtOutputView.getText().toString(); // 번역할 내용
                     }
                     Log.d(getClass().getName(), "SEONGJUN MT() text : " + text);
+                    sr = text;
 
                     String MTRequestTemplate = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                             "<STML UtteranceID=\"0\" Version=\"1.0\">\n" +
@@ -166,7 +176,12 @@ public class PrismClient {
                             @Override
                             public void run() {
                                 mtOutputView.setText(mtResult);
-                                Log.d(getClass().getName(), "SEONGJUN MT mtOutputView: ");
+
+                                // 인식결과 및 번역결과 DB에 저장
+                                TranslationHistory th = new TranslationHistory(sr, mtResult);
+                                dao.insertHistory(th);
+
+                                Log.d(getClass().getName(), "SEONGJUN MT mtOutputView: " + mtResult);
                             }
                         });
                     } else {
@@ -174,7 +189,12 @@ public class PrismClient {
                             @Override
                             public void run() {
                                 srOutputView.setText(mtResult);
-                                Log.d(getClass().getName(), "SEONGJUN MT srOutputView: ");
+
+                                // 인식결과 및 번역결과 DB에 저장
+                                TranslationHistory th = new TranslationHistory(sr, mtResult);
+                                dao.insertHistory(th);
+
+                                Log.d(getClass().getName(), "SEONGJUN MT srOutputView: " + mtResult);
                             }
                         });
                     }

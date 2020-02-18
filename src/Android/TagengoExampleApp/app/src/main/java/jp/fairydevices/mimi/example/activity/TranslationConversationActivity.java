@@ -39,7 +39,7 @@ public class TranslationConversationActivity extends AppCompatActivity implement
         checkPermission(this); // 번역 메인 화면에서 한 번만 검사하면 됨
         initView(); // 레이아웃 뷰 초기화
 
-        prismClient = new PrismClient(srOutput, mtOutput);
+        prismClient = new PrismClient(srOutput, mtOutput, this);
         prismClient.updateToken(); // 액세스 토큰 취득
     }
 

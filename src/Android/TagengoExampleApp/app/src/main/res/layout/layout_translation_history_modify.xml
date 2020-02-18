@@ -41,10 +41,10 @@
         android:gravity="center">
 
         <ImageButton
-            android:id="@+id/bookmarkButton"
+            android:id="@+id/clearButton"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:background="@drawable/ic_star_border_black_24dp"/>
+            android:background="@drawable/ic_clear_black_24dp"/>
 
     </LinearLayout>
 

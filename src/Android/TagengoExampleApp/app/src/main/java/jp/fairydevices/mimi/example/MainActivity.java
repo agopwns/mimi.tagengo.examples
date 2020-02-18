@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         checkPermission(this);
         initView();
 
-        prismClient = new PrismClient(srOutput, mtOutput);
+        prismClient = new PrismClient(srOutput, mtOutput, this);
         prismClient.updateToken(); // 액세스 토큰 취득
     }
 

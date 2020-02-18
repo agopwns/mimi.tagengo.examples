@@ -322,6 +322,7 @@ public class TranslationOCRResultActivity extends AppCompatActivity {
                     Gson gson = new Gson();
                     Type listType = new TypeToken<ArrayList<Example>>() {}.getType();
                     ArrayList<Example> mList = gson.fromJson(result, listType);
+
                     for(int i = 0; i < mList.size(); i++){
                         Log.d(TAG, "인식 결과 " + i + " : " + mList.get(i).getDescription());
 
@@ -419,7 +420,7 @@ public class TranslationOCRResultActivity extends AppCompatActivity {
                 Log.d(TAG, "최종 문자열 : " + tempStr);
 
                 // 4. 번역된 텍스트 값 아래 textView 에 표시(임시)
-                prismClient = new PrismClient(textView, textViewResult);
+                prismClient = new PrismClient(textView, textViewResult, getApplicationContext());
                 prismClient.updateToken(); // 액세스 토큰 취득
                 prismClient.setInputLanguage("ja");
                 prismClient.setTargetLanguage("ko");
