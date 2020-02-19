@@ -27,7 +27,7 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
     private ImageButton ssButton; // 음성 합성
     private ImageButton clearButton;
     private ImageButton conversationButton;
-    private ImageButton menuButton;
+    private ImageButton historyButton;
     private ImageButton bookmarkButton;
 
     // 테스트
@@ -82,12 +82,15 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
                 clearButton.setVisibility(View.INVISIBLE);
             }
         });
+
     }
 
     private void initView() {
         ssButton = findViewById(R.id.ssButton);
         clearButton = findViewById(R.id.clearButton);
-        menuButton = findViewById(R.id.menuButton);
+        clearButton.setVisibility(View.INVISIBLE);
+
+        historyButton = findViewById(R.id.historyButton);
         bookmarkButton = findViewById(R.id.bookmarkButton);
 
         mtBackground = findViewById(R.id.mtBackground);
@@ -101,7 +104,7 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
 
         ssButton.setOnClickListener(this);
         clearButton.setOnClickListener(this);
-        menuButton.setOnClickListener(this);
+        historyButton.setOnClickListener(this);
         bookmarkButton.setOnClickListener(this);
 
         mtBackground.setOnClickListener(this);
@@ -168,7 +171,7 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
                 Intent cameraIntent = new Intent(this, TranslationCameraActivity.class);
                 startActivity(cameraIntent);
                 break;
-            case R.id.menuButton: // 번역 기록 리스트 이동
+            case R.id.historyButton: // 번역 기록 리스트 이동
                 Intent historyIntent = new Intent(this, TranslationHistoryActivity.class);
                 startActivity(historyIntent);
                 break;

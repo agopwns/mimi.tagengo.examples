@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -82,12 +81,12 @@ public class TranslationHistoryAdapter  extends RecyclerView.Adapter<Translation
                         mContext.getResources().getDrawable(R.drawable.ic_star_black_24dp).getConstantState())){
                     dao.updateBookMark(mData.get(position).getId(), false);
                     holder.bookmarkButton.setImageResource(R.drawable.ic_star_border_black_24dp);
-                    Toast.makeText(mContext, "aa", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(mContext, "aa", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     dao.updateBookMark(mData.get(position).getId(), true);
                     holder.bookmarkButton.setImageResource(R.drawable.ic_star_black_24dp);
-                    Toast.makeText(mContext, "bb", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(mContext, "bb", Toast.LENGTH_SHORT).show();
                 }
             }
         });

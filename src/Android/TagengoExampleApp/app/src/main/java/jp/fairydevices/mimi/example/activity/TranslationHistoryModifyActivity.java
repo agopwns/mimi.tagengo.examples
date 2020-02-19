@@ -46,4 +46,10 @@ public class TranslationHistoryModifyActivity extends AppCompatActivity {
         super.onResume();
         loadNotes();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(0, 0);
+    }
 }

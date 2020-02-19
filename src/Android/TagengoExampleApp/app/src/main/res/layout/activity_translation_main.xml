@@ -42,11 +42,22 @@
             android:layout_weight="1" />
 
         <ImageButton
+            android:id="@+id/historyButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/colorWhiteOpacity0"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_history_black_24dp" />
+
+        <ImageButton
             android:id="@+id/bookmarkButton"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginRight="20dp"
             android:background="@color/colorWhiteOpacity0"
+            android:foreground="?attr/selectableItemBackground"
             android:scaleType="centerInside"
             android:src="@drawable/ic_star_black_24dp" />
 
@@ -58,7 +69,7 @@
         android:id="@+id/linearlayout_language"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
         android:gravity="center_horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_menubar">
@@ -112,6 +123,7 @@
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="12dp"
         android:layout_centerInParent="true"
         android:background="#F1F1F1"
         app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +135,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="14dp"
         android:background="@null"
         android:ems="10"
         android:gravity="start|top"
@@ -132,7 +144,6 @@
         android:maxHeight="90dp"
         android:maxLength="50"
         android:maxLines="4"
-        android:minHeight="36dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_language" />
 
@@ -140,6 +151,7 @@
         android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="12dp"
         android:layout_centerInParent="true"
         android:background="#F1F1F1"
         app:layout_constraintBottom_toTopOf="@+id/linearlayout_underbar"
@@ -258,8 +270,8 @@
                 android:layout_gravity="center">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:layout_gravity="center"
                     android:background="@color/colorWhiteOpacity0"
                     android:scaleType="centerInside"
@@ -333,10 +345,9 @@
         android:id="@+id/clearButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_gravity="center"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="10dp"
         android:background="@color/colorWhiteOpacity0"
         android:scaleType="centerInside"
         android:src="@drawable/ic_clear_black_24dp"
