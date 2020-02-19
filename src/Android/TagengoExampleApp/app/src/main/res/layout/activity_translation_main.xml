@@ -48,7 +48,9 @@
             android:layout_marginRight="20dp"
             android:background="@color/colorWhiteOpacity0"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_star_border_black_24dp" />
+            android:src="@drawable/ic_star_black_24dp" />
+
+
 
     </LinearLayout>
 
@@ -173,114 +175,141 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <FrameLayout
+        android:id="@+id/mtBackground"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@color/colorWhiteOpacity0"
+        android:foreground="?attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:src="@drawable/ic_g_translate_black_24dp"
+                    tools:ignore="VectorDrawableCompat"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:text="번역"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+         </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/srBackground"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:background="@color/colorWhiteOpacity0"
+            android:foreground="?attr/selectableItemBackground">
 
-            <ImageButton
-                android:id="@+id/mtButton"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:background="@color/colorWhiteOpacity0"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_g_translate_black_24dp"
-                tools:ignore="VectorDrawableCompat" />
-
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="번역"
-                android:textSize="12dp" />
+                android:gravity="center"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorWhiteOpacity0"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_mic_black_24dp"
+                    tools:ignore="VectorDrawableCompat" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/srTextview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="음성"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/conversationBackground"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:background="@color/colorWhiteOpacity0"
+            android:foreground="?attr/selectableItemBackground">
 
-            <ImageButton
-                android:id="@+id/srButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:background="@color/colorWhiteOpacity0"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_mic_black_24dp"
-                tools:ignore="VectorDrawableCompat" />
-
-            <TextView
-                android:id="@+id/srTextview"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="음성"
-                android:textSize="12dp" />
+                android:orientation="vertical"
+                android:layout_gravity="center">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorWhiteOpacity0"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_chat"
+                    tools:ignore="VectorDrawableCompat" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="대화"
+                    android:textSize="12dp" />
 
-            <ImageButton
-                android:id="@+id/conversationButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:background="@color/colorWhiteOpacity0"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_chat"
-                tools:ignore="VectorDrawableCompat" />
+            </LinearLayout>
 
-            <TextView
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/cameraBackground"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@color/colorWhiteOpacity0"
+            android:foreground="?attr/selectableItemBackground">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="대화"
-                android:textSize="12dp" />
+                android:orientation="vertical"
+                android:layout_gravity="center">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorWhiteOpacity0"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_camera_alt_black_24dp"
+                    tools:ignore="VectorDrawableCompat" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="카메라"
+                    android:textSize="12dp" />
 
-            <ImageButton
-                android:id="@+id/cameraButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:background="@color/colorWhiteOpacity0"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_camera_alt_black_24dp"
-                tools:ignore="VectorDrawableCompat" />
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="카메라"
-                android:textSize="12dp" />
-
-        </LinearLayout>
+        </FrameLayout>
 
     </LinearLayout>
 

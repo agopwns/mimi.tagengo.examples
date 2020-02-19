@@ -14,6 +14,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.ybq.android.spinkit.SpinKitView;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
@@ -62,6 +64,7 @@ public class TranslationOCRResultActivity extends AppCompatActivity {
     ImageView imageView;
     String filePath;
     private PrismClient prismClient = null;
+    SpinKitView spin_kit_input, spin_kit_output;
 
     // Google Cloud Vision API
     private static final String CLOUD_VISION_API_KEY = "AIzaSyB84oqh3MUWK5rEWwi4N1lk2jogtSq0PsU";
@@ -96,6 +99,10 @@ public class TranslationOCRResultActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView);
         textViewResult = findViewById(R.id.textViewResult);
 //        textView.setText(filePath);
+        spin_kit_input = findViewById(R.id.spin_kit_input);
+        spin_kit_output = findViewById(R.id.spin_kit_output);
+
+
 
         // 이미지 뷰에 넣기
         imageView = findViewById(R.id.imageView);
@@ -419,6 +426,10 @@ public class TranslationOCRResultActivity extends AppCompatActivity {
                 textView.setText(tempStr);
                 Log.d(TAG, "최종 문자열 : " + tempStr);
 
+                // 로딩바 없어지고 텍스트뷰 나오게
+                spin_kit_input.setVisibility(View.GONE);
+                textView.setVisibility(View.VISIBLE);
+
                 // 4. 번역된 텍스트 값 아래 textView 에 표시(임시)
                 prismClient = new PrismClient(textView, textViewResult, getApplicationContext());
                 prismClient.updateToken(); // 액세스 토큰 취득
@@ -427,6 +438,10 @@ public class TranslationOCRResultActivity extends AppCompatActivity {
                 prismClient.setDirection(true); // 정방향
 
                 prismClient.MT();
+
+                // 로딩바 없어지고 텍스트뷰 나오게
+                spin_kit_output.setVisibility(View.GONE);
+                textViewResult.setVisibility(View.VISIBLE);
 
             }
         }

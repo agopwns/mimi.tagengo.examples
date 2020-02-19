@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
 
     implementation 'com.squareup.picasso:picasso:2.71828' // 피카소 - 이미지 라이브러리
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0' // 로딩 애니메이션 프로그레스바
 
     // Google Cloud Vision API
     implementation 'com.google.android.gms:play-services-vision:19.0.0'

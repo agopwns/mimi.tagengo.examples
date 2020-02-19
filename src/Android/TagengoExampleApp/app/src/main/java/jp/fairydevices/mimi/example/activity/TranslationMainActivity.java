@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,14 +23,18 @@ import jp.fairydevices.mimi.example.R;
 
 public class TranslationMainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton srButton; // 음성 인식
-    private ImageButton mtButton; // 기계 번역
+
     private ImageButton ssButton; // 음성 합성
     private ImageButton clearButton;
-    private ImageButton cameraButton;
     private ImageButton conversationButton;
     private ImageButton menuButton;
     private ImageButton bookmarkButton;
+
+    // 테스트
+    private FrameLayout mtBackground; // 기계 번역
+    private FrameLayout srBackground; // 음성 인식
+    private FrameLayout conversationBackground; // 음성 인식
+    private FrameLayout cameraBackground; // 음성 인식
 
 
     private EditText srOutput; // 인식 결과 - 번역할 문장
@@ -74,32 +79,35 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // 입력하기 전에
+                clearButton.setVisibility(View.INVISIBLE);
             }
         });
     }
 
     private void initView() {
-        srButton = findViewById(R.id.srButton);
-        mtButton = findViewById(R.id.mtButton);
         ssButton = findViewById(R.id.ssButton);
         clearButton = findViewById(R.id.clearButton);
-        conversationButton = findViewById(R.id.conversationButton);
-        cameraButton = findViewById(R.id.cameraButton);
         menuButton = findViewById(R.id.menuButton);
         bookmarkButton = findViewById(R.id.bookmarkButton);
+
+        mtBackground = findViewById(R.id.mtBackground);
+        srBackground = findViewById(R.id.srBackground);
+        conversationBackground = findViewById(R.id.conversationBackground);
+        cameraBackground = findViewById(R.id.cameraBackground);
 
         srOutput = findViewById(R.id.srOutputText);
         mtOutput = findViewById(R.id.mtOutputText);
         srTextview = findViewById(R.id.srTextview);
 
-        srButton.setOnClickListener(this);
-        mtButton.setOnClickListener(this);
         ssButton.setOnClickListener(this);
-        cameraButton.setOnClickListener(this);
         clearButton.setOnClickListener(this);
-        conversationButton.setOnClickListener(this);
         menuButton.setOnClickListener(this);
         bookmarkButton.setOnClickListener(this);
+
+        mtBackground.setOnClickListener(this);
+        srBackground.setOnClickListener(this);
+        conversationBackground.setOnClickListener(this);
+        cameraBackground.setOnClickListener(this);
     }
 
     private void checkPermission(Activity activity) {
@@ -119,12 +127,13 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.srButton: // 음성인식
+            case R.id.srBackground: // 음성인식
                 if (isRecording) {
                     // 녹음(인식)중
                     prismClient.SRInputEnd(); // 음성 인식 종료
                     isRecording = false;
                     srTextview.setText("음성");
+                    ssButton.setVisibility(View.VISIBLE);
                 } else {
                     // 대기중
                     prismClient.SRInputStart(true);
@@ -135,7 +144,7 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
                     srTextview.setText("인식중..");
                 }
                 break;
-            case R.id.mtButton: // 기계번역
+            case R.id.mtBackground: // 기계번역
                 prismClient.setDirection(true);
                 prismClient.MT();
                 // 번역 후 음성 합성 버튼 나오게
@@ -147,13 +156,15 @@ public class TranslationMainActivity extends AppCompatActivity implements View.O
                 break;
             case R.id.clearButton: // 인식 텍스트 초기화
                 srOutput.setText("");
+                mtOutput.setText("");
+                ssButton.setVisibility(View.INVISIBLE);
                 clearButton.setVisibility(View.INVISIBLE);
                 break;
-            case R.id.conversationButton: // 대화 번역 액티비티로 이동
+            case R.id.conversationBackground: // 대화 번역 액티비티로 이동
                 Intent intent = new Intent(this, TranslationConversationActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.cameraButton: // 카메라 번역 액티비티로 이동
+            case R.id.cameraBackground: // 카메라 번역 액티비티로 이동
                 Intent cameraIntent = new Intent(this, TranslationCameraActivity.class);
                 startActivity(cameraIntent);
                 break;
