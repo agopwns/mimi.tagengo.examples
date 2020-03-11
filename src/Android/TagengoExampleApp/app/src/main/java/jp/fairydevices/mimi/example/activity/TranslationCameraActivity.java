@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.Surface;
@@ -49,6 +50,7 @@ public class TranslationCameraActivity extends AppCompatActivity {
 
     TextureView textureView;
     ImageButton button;
+    private static final String TAG = TranslationCameraActivity.class.getSimpleName();
 
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
 
@@ -195,10 +197,16 @@ public class TranslationCameraActivity extends AppCompatActivity {
     // 찍은 JPEG 최종 저장
     private void save(byte[] bytes) throws IOException {
 
-        OutputStream outputStream = null;
-        outputStream = new FileOutputStream(file);
-        outputStream.write(bytes);
-        outputStream.close();
+        try {
+            OutputStream outputStream = null;
+            outputStream = new FileOutputStream(file);
+            outputStream.write(bytes);
+            outputStream.close();
+        } catch(Exception ex){
+            Log.d(TAG, "파일 경로 : " + file.getPath());
+            Log.d(TAG, "예외 발생 : " + ex);
+        }
+
     }
 
     @Override
