@@ -23,7 +23,7 @@
             android:layout_height="40dp"
             android:background="@color/colorWhiteOpacity0"
             android:scaleType="centerInside"
-            android:text="한국어"
+            android:text="@string/translation_conversation_from"
             android:textSize="16dp"
             tools:ignore="VectorDrawableCompat" />
 
@@ -44,7 +44,7 @@
             android:layout_height="40dp"
             android:background="@color/colorWhiteOpacity0"
             android:scaleType="centerInside"
-            android:text="일본어"
+            android:text="@string/translation_conversation_to"
             android:textSize="16dp"
             tools:ignore="VectorDrawableCompat" />
 

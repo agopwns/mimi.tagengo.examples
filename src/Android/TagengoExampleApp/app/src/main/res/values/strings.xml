@@ -4,4 +4,34 @@
     <string name="sr_button_on">음성인식(다시 누르면 종료)</string>
     <string name="mt_button">번역</string>
     <string name="ss_button">음성합성</string>
+
+    <!--    번역 메인 -->
+    <string name="translation_main_title">번역 메인</string>
+    <string name="translation_main_from">한국어</string>
+    <string name="translation_main_to">일본어</string>
+    <string name="translation_main_hint">번역할 내용을 입력해주세요..</string>
+    <string name="translation_main_btn_translate">번역</string>
+    <string name="translation_main_btn_voice">음성</string>
+    <string name="translation_main_btn_conversation">대화</string>
+    <string name="translation_main_btn_camera">카메라</string>
+
+    <!--    통역 대화 -->
+    <string name="translation_conversation_title">대화 통역</string>
+    <string name="translation_conversation_from">한국어</string>
+    <string name="translation_conversation_to">일본어</string>
+
+    <!--    번역 카메라 -->
+    <string name="translation_camera_sr">인식 결과</string>
+    <string name="translation_camera_mt">통역 결과</string>
+
+    <!--    번역 기록 -->
+    <string name="translation_history_title">번역 기록</string>
+    <string name="translation_history_btn_modify">편집</string>
+
+    <!--    번역 기록 수정 -->
+    <string name="translation_history_modify_title">번역 기록 수정</string>
+
+    <!--    번역 즐겨찾기 -->
+    <string name="translation_bookmark_title">즐겨찾기</string>
+
 </resources>

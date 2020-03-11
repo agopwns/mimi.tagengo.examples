@@ -32,7 +32,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
-            android:text="즐겨찾기"
+            android:text="@string/translation_bookmark_title"
             android:textColor="@color/colorBlack"
             android:textSize="18dp"
             android:textStyle="bold" />

@@ -33,7 +33,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
-            android:text="번역 기록"
+            android:text="@string/translation_history_title"
             android:textColor="@color/colorBlack"
             android:textSize="18dp"
             android:textStyle="bold" />
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:layout_marginRight="20dp"
-            android:text="편집"
+            android:text="@string/translation_history_btn_modify"
             android:textSize="16dp" />
 
     </LinearLayout>

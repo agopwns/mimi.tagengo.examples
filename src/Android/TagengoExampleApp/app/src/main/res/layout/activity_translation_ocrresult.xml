@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="5dp"
-                android:text="인식 결과"
+                android:text="@string/translation_camera_sr"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorBlack"/>
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="5dp"
-                android:text="번역 결과"
+                android:text="@string/translation_camera_mt"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorNormalTextGreen"

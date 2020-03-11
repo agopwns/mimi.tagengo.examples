@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="15dp"
-            android:text="번역 메인"
+            android:text="@string/translation_main_title"
             android:textColor="@color/colorBlack"
             android:textSize="18dp"
             android:textStyle="bold"
@@ -80,7 +80,7 @@
             android:layout_height="40dp"
             android:background="@color/colorWhiteOpacity0"
             android:scaleType="centerInside"
-            android:text="한국어"
+            android:text="@string/translation_main_from"
             android:textSize="16dp"
             tools:ignore="VectorDrawableCompat" />
 
@@ -101,7 +101,7 @@
             android:layout_height="40dp"
             android:background="@color/colorWhiteOpacity0"
             android:scaleType="centerInside"
-            android:text="일본어"
+            android:text="@string/translation_main_to"
             android:textSize="16dp"
             tools:ignore="VectorDrawableCompat" />
 
@@ -139,7 +139,7 @@
         android:background="@null"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="번역할 내용을 입력해주세요..."
+        android:hint="@string/translation_main_hint"
         android:isScrollContainer="true"
         android:maxHeight="90dp"
         android:maxLength="50"
@@ -212,7 +212,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
-                    android:text="번역"
+                    android:text="@string/translation_main_btn_translate"
                     android:textSize="12dp" />
 
             </LinearLayout>
@@ -248,7 +248,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="음성"
+                    android:text="@string/translation_main_btn_voice"
                     android:textSize="12dp" />
 
             </LinearLayout>
@@ -282,7 +282,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="대화"
+                    android:text="@string/translation_main_btn_conversation"
                     android:textSize="12dp" />
 
             </LinearLayout>
@@ -316,7 +316,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="카메라"
+                    android:text="@string/translation_main_btn_camera"
                     android:textSize="12dp" />
 
             </LinearLayout>
