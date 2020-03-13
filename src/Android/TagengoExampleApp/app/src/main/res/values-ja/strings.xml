@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TagengoExampleApp</string>
+    <string name="app_name">Translation</string>
     <string name="sr_button_off">음성인식</string>
     <string name="sr_button_on">음성인식(다시 누르면 종료)</string>
     <string name="mt_button">번역</string>
