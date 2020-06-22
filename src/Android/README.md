@@ -2,6 +2,7 @@
 
 
 # 안드로이드판 샘플 앱 빌드 실행 순서
+주의 : 현재는 대회가 종료되어 API를 사용하려면 유료 신청을 해서 사용해야 합니다.
 
 ## API 예제 실행 방법
 1. https://github.com/agopwns/mimi.tagengo.examples git download
