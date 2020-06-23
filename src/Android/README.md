@@ -1,8 +1,27 @@
-# Nova Trip 번역 기능
+# Nova Trip
+일본 총무성이 주최한 ‘다국어 번역 대회’ 최종 진출작으로 사용자의 상황을 고려하여 AI 챗봇이 맞춤형 추천과 통번역, 길찾기 기능을 제공하는 여행 어플입니다.   
+  
+기본 기획 및 설계는 팀원들과 함께 진행하였으며 대회측에서 제공하는 다국어 번역 API를 활용하여 통번역 기능을 개발하였습니다.  
+  
+작품의 상세 작동 영상은 [여기](https://youtu.be/pjqU5UYs7FQ)에서 보실 수 있습니다.     
+    
+## 스크린샷
+<div style="float:left;">
+  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/1.jpg" alt="Your image title" width="200"/> 
+  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/2.jpg" alt="Your image title" width="200"/>
+  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/3.jpg" alt="Your image title" width="200"/>
+  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/4.jpg" alt="Your image title" width="200"/>
+  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/5.jpg" alt="Your image title" width="200"/>
+</div>
+
+## 기능
+
+
+## 사용 기술
 
 
 # 안드로이드판 샘플 앱 빌드 실행 순서
-주의 : 현재는 대회가 종료되어 API를 사용하려면 유료 신청을 해서 사용해야 합니다.
+주의 : 현재는 대회가 종료되어 API를 사용하려면 유료 신청을 해서 사용해야 하므로 실행에는 어려움이 있습니다.
 
 ## API 예제 실행 방법
 1. https://github.com/agopwns/mimi.tagengo.examples git download
