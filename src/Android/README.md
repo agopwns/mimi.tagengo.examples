@@ -7,11 +7,11 @@
     
 ## 스크린샷
 <div style="float:left;">
-  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/1.jpg" alt="Your image title" width="450"/> 
-  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/2.jpg" alt="Your image title" width="450"/>
-  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/3.jpg" alt="Your image title" width="450"/>
-  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/4.jpg" alt="Your image title" width="450"/>
-  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/5.jpg" alt="Your image title" width="450"/>
+  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/1.jpg" alt="Your image title" width="290"/> 
+  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/2.jpg" alt="Your image title" width="290"/>
+  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/3.jpg" alt="Your image title" width="290"/>
+  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/4.jpg" alt="Your image title" width="290"/>
+  <img src="https://github.com/agopwns/mimi.tagengo.examples/blob/master/src/Android/TagengoExampleApp/images/5.jpg" alt="Your image title" width="290"/>
 </div>
 
 ## 기능
