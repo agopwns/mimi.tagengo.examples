@@ -15,10 +15,20 @@
 </div>
 
 ## 기능
-
+  - 텍스트 번역(음성 인식, 음성 합성)
+  - 대화 번역(상대방과 번갈아가며 번역 하는 기능)
+  - 번역 기록
+  - 번역 북마크
+  - 카메라 번역(Google Vision API OCR 기능)
 
 ## 사용 기술
-
+  - AWS EC2 
+  - PHP 
+  - MYSQL DB 
+  - Android 
+  - Google Vision API 
+  - Sandbox Server API 
+  - Room DB
 
 # 안드로이드판 샘플 앱 빌드 실행 순서
 주의 : 현재는 대회가 종료되어 API를 사용하려면 유료 신청을 해서 사용해야 하므로 실행에는 어려움이 있습니다.
@@ -121,5 +131,25 @@ app/java/jp.fairydevices.mimi/example/PrismClient 경로 이동
 - OpenSSL (1.0.2q)
 - Poco (1.9.0)
 - FLAC （1.3.2）
-
-(라이센스 추가시 작성 요망)
+  
+MIT License  
+  
+Copyright (c) 2020 agopwns  
+  
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:  
+  
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.  
+  
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.  
